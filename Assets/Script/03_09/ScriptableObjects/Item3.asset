@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca245994c23bba34faf0ab6419b25868, type: 3}
   m_Name: Item3
   m_EditorClassIdentifier: 
-  pontos: 0
-  cor: {r: 0, g: 0, b: 0, a: 0}
-  tamanho: 0
+  pontos: -20
+  cor: {r: 1, g: 0, b: 0, a: 0}
+  tamanho: 2
