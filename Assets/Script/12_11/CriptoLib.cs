@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CriptoLib : MonoBehaviour
 {
+    #region Duas Chaves
     static string chave1 = "vela";
     static string chave2 = "azul";
 
@@ -24,6 +25,13 @@ public class CriptoLib : MonoBehaviour
     public static string DescriptografarComDuasChaves(string conteudoCriptografado)
     {
         string textoDescripto = "";
+        char[] caracteres = conteudoCriptografado.ToCharArray();
+        for (int i = 0; i < caracteres.Length; i++)
+        {
+            caracteres[i] = CriptoLib.BuscarCorrespondencia(caracteres[i]);
+        }
+
+        textoDescripto = new string(caracteres);
 
         return textoDescripto;
     }
@@ -46,4 +54,55 @@ public class CriptoLib : MonoBehaviour
 
         return charOriginal;
     }
+    #endregion
+
+    #region Deslocamento
+    static int valorDeslocamento = 10;
+
+    public static string CriptografiaComDeslocamento(string conteudoOriginal)
+    {
+        string textoCriptografado = "";
+        char[] caracteres = conteudoOriginal.ToCharArray();
+        for (int i = 0; i < caracteres.Length; i++)
+        {
+            caracteres[i] = CriptoLib.Deslocar(caracteres[i], true);
+        }
+        textoCriptografado = new string(caracteres);
+
+        return textoCriptografado;
+    }
+
+    public static string DescriptografiaComDeslocamento(string conteudoCriptografado)
+    {
+        string textoDescriptografado = "";
+        char[] caracteres = conteudoCriptografado.ToCharArray();
+        for (int i = 0; i < caracteres.Length; i++)
+        {
+            caracteres[i] = CriptoLib.Deslocar(caracteres[i], false);
+
+        }
+
+        textoDescriptografado = new string(caracteres);
+
+        return textoDescriptografado;
+    }
+
+    public static char Deslocar(char charOriginal, bool criptografando)
+    {
+        int charInteiro = (charOriginal);
+        if (criptografando == true)
+        {
+            charInteiro = charInteiro + valorDeslocamento;
+        }
+        else
+        {
+            charInteiro = charInteiro - valorDeslocamento;
+        }
+
+        char charDeslocado = (char)charInteiro;
+        return charDeslocado;
+
+    }
+
+    #endregion
 }

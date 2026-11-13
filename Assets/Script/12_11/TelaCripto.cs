@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TelaCripto : MonoBehaviour
 {
+    
     [SerializeField]
     InputField textoEntrada;
 
@@ -19,7 +20,8 @@ public class TelaCripto : MonoBehaviour
         Debug.Log("Criptografando");
         string conteudoCripto = "Texto criptografado";
 
-        conteudoCripto = CriptoLib.CriptografarComDuasChaves(textoEntrada.text);
+        //conteudoCripto = CriptoLib.CriptografarComDuasChaves(textoEntrada.text);
+        conteudoCripto = CriptoLib.CriptografiaComDeslocamento(textoEntrada.text);
 
         //CriptoLib.CriptografarComDuasChaves();
 
@@ -31,6 +33,7 @@ public class TelaCripto : MonoBehaviour
     {
         Debug.Log("Descriptografando");
         string conteudoDescripto = "Texto descriptografado";
+        conteudoDescripto = CriptoLib.DescriptografiaComDeslocamento(textoCripto.text);
 
         textoDescripto.text = conteudoDescripto;
     }
